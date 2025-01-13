@@ -52,6 +52,16 @@ public class BoardControllerImpl  implements BoardController{
 		
 	}
 	
+	//@Override
+	@RequestMapping(value= "/board/listImages.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listImages(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		List imageList = boardService.listArticles();
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("imageList", imageList);
+		return mav;
+	}
+	
 	 //한 개 이미지 글쓰기
 	@Override
 	@RequestMapping(value="/board/addNewArticle.do" ,method = RequestMethod.POST)
