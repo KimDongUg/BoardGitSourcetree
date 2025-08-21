@@ -86,7 +86,7 @@ public class BoardControllerImpl  implements BoardController{
 		return mav;
 	}
 	
-	 //占쏙옙 占쏙옙 占싱뱄옙占쏙옙 占쌜억옙占쏙옙
+	 //한 개 이미지 글쓰기
 	@Override
 	@RequestMapping(value="/board/addNewArticle.do" ,method = RequestMethod.POST)
 	@ResponseBody
@@ -144,7 +144,7 @@ public class BoardControllerImpl  implements BoardController{
 	}
 	
 	
-	//占싼곤옙占쏙옙 占싱뱄옙占쏙옙 占쏙옙占쏙옙占쌍깍옙
+	//한개의 이미지 보여주기
 	@RequestMapping(value="/board/viewArticle.do" ,method = RequestMethod.GET)
 	public ModelAndView viewArticle(@RequestParam("articleNO") int articleNO,
                                     HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -157,7 +157,7 @@ public class BoardControllerImpl  implements BoardController{
 	}
 	
 	/*
-	//占쏙옙占쏙옙 占싱뱄옙占쏙옙 占쏙옙占쏙옙占쌍깍옙
+	//다중 이미지 보여주기
 	@RequestMapping(value="/board/viewArticle.do" ,method = RequestMethod.GET)
 	public ModelAndView viewArticle(@RequestParam("articleNO") int articleNO,
 			  HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -172,7 +172,7 @@ public class BoardControllerImpl  implements BoardController{
 	
 
 	
-  //占쏙옙 占쏙옙 占싱뱄옙占쏙옙 占쏙옙占쏙옙 占쏙옙占�
+  //한 개 이미지 수정 기능
   @RequestMapping(value="/board/modArticle.do" ,method = RequestMethod.POST)
   @ResponseBody
   public ResponseEntity modArticle(MultipartHttpServletRequest multipartRequest,  
@@ -206,7 +206,7 @@ public class BoardControllerImpl  implements BoardController{
          oldFile.delete();
        }	
        message = "<script>";
-	   message += " alert('占쏙옙占쏙옙 占쏙옙占쏙옙占쌩쏙옙占싹댐옙.');";
+	   message += " alert('글을 수정했습니다.');";
 	   message += " location.href='"+multipartRequest.getContextPath()+"/board/viewArticle.do?articleNO="+articleNO+"';";
 	   message +=" </script>";
        resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -214,7 +214,7 @@ public class BoardControllerImpl  implements BoardController{
       File srcFile = new File(ARTICLE_IMAGE_REPO+"\\"+"temp"+"\\"+imageFileName);
       srcFile.delete();
       message = "<script>";
-	  message += " alert('占쏙옙占쏙옙占쏙옙 占쌩삼옙占쌩쏙옙占싹댐옙.占쌕쏙옙 占쏙옙占쏙옙占쏙옙占쌍쇽옙占쏙옙');";
+	  message += " alert('오류가 발생했습니다.다시 수정해주세요');";
 	  message += " location.href='"+multipartRequest.getContextPath()+"/board/viewArticle.do?articleNO="+articleNO+"';";
 	  message +=" </script>";
       resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -238,14 +238,14 @@ public class BoardControllerImpl  implements BoardController{
 		FileUtils.deleteDirectory(destDir);
 		
 		message = "<script>";
-		message += " alert('占쏙옙占쏙옙 占쏙옙占쏙옙占쌩쏙옙占싹댐옙.');";
+		message += " alert('글을 삭제했습니다.');";
 		message += " location.href='"+request.getContextPath()+"/board/listArticles.do';";
 		message +=" </script>";
 	    resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 	       
 	}catch(Exception e) {
 		message = "<script>";
-		message += " alert('占쌜억옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌩삼옙占쌩쏙옙占싹댐옙.占쌕쏙옙 占시듸옙占쏙옙 占쌍쇽옙占쏙옙.');";
+		message += " alert('작업중 오류가 발생했습니다.다시 시도해 주세요.');";
 		message += " location.href='"+request.getContextPath()+"/board/listArticles.do';";
 		message +=" </script>";
 	    resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -255,7 +255,7 @@ public class BoardControllerImpl  implements BoardController{
   }  
   
 /*
-  //占쏙옙占쏙옙 占싱뱄옙占쏙옙 占쏙옙 占쌩곤옙占싹깍옙
+  //다중 이미지 글 추가하기
   @Override
   @RequestMapping(value="/board/addNewArticle.do" ,method = RequestMethod.POST)
   @ResponseBody
@@ -271,7 +271,7 @@ public class BoardControllerImpl  implements BoardController{
 		articleMap.put(name,value);
 	}
 	
-	//占싸깍옙占쏙옙 占쏙옙 占쏙옙占실울옙 占쏙옙占쏙옙占� 회占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쌜억옙占쏙옙 占쏙옙占싱듸옙 占쏙옙占싶쇽옙 Map占쏙옙 占쏙옙占쏙옙占쌌니댐옙.
+	//로그인 시 세션에 저장된 회원 정보에서 글쓴이 아이디를 얻어와서 Map에 저장합니다.
 	HttpSession session = multipartRequest.getSession();
 	MemberVO memberVO = (MemberVO) session.getAttribute("member");
 	String id = memberVO.getId();
@@ -305,7 +305,7 @@ public class BoardControllerImpl  implements BoardController{
 		}
 		    
 		message = "<script>";
-		message += " alert('占쏙옙占쏙옙占쏙옙 占쌩곤옙占쌩쏙옙占싹댐옙.');";
+		message += " alert('새글을 추가했습니다.');";
 		message += " location.href='"+multipartRequest.getContextPath()+"/board/listArticles.do'; ";
 		message +=" </script>";
 	    resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -322,7 +322,7 @@ public class BoardControllerImpl  implements BoardController{
 
 		
 		message = " <script>";
-		message +=" alert('占쏙옙占쏙옙占쏙옙 占쌩삼옙占쌩쏙옙占싹댐옙. 占쌕쏙옙 占시듸옙占쏙옙 占쌍쇽옙占쏙옙');');";
+		message +=" alert('오류가 발생했습니다. 다시 시도해 주세요');');";
 		message +=" location.href='"+multipartRequest.getContextPath()+"/board/articleForm.do'; ";
 		message +=" </script>";
 		resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -366,7 +366,7 @@ public class BoardControllerImpl  implements BoardController{
 	}
 	
 	/*
-	//占쏙옙占쏙옙 占싱뱄옙占쏙옙 占쏙옙占싸듸옙占싹깍옙
+	//다중 이미지 업로드하기
 	private List<String> upload(MultipartHttpServletRequest multipartRequest) throws Exception{
 		List<String> fileList= new ArrayList<String>();
 		Iterator<String> fileNames = multipartRequest.getFileNames();
@@ -377,9 +377,9 @@ public class BoardControllerImpl  implements BoardController{
 			fileList.add(originalFileName);
 			File file = new File(ARTICLE_IMAGE_REPO +"\\"+"temp"+"\\" + fileName);
 			if(mFile.getSize()!=0){ //File Null Check
-				if(!file.exists()){ //占쏙옙貫占� 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占�
-					file.getParentFile().mkdirs();  //占쏙옙恝占� 占쌔댐옙占싹댐옙 占쏙옙占썰리占쏙옙占쏙옙 占쏙옙占쏙옙
-					mFile.transferTo(new File(ARTICLE_IMAGE_REPO +"\\"+"temp"+ "\\"+originalFileName)); //占쌈시뤄옙 占쏙옙占쏙옙占� multipartFile占쏙옙 占쏙옙占쏙옙 占쏙옙占싹뤄옙 占쏙옙占쏙옙
+				if(!file.exists()){ //경로상에 파일이 존재하지 않을 경우
+					file.getParentFile().mkdirs();  //경로에 해당하는 디렉토리들을 생성
+					mFile.transferTo(new File(ARTICLE_IMAGE_REPO +"\\"+"temp"+ "\\"+originalFileName)); //임시로 저장된 multipartFile을 실제 파일로 전송
 				}
 			}
 		}
