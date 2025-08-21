@@ -26,6 +26,11 @@
       <put-attribute name="title" value="유진이 페이지" />
       <put-attribute name="body" value="/WEB-INF/views/youjin.jsp" />
    </definition>
+   
+   	<definition name="/yungyo" extends="baseLayout">
+      <put-attribute name="title" value="김윤교 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/yungyo.jsp" />
+   </definition>
     
    <definition name="/member/loginForm" extends="baseLayout">
       <put-attribute name="title" value="로그인창" />
