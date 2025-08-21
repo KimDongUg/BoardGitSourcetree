@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-		������ �ȳ� ~~~
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"   isELIgnored="false"  %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
@@ -29,6 +17,6 @@
 <body>
    <h1>유진이야 안녕이다!!</h1>
    일어나라
->>>>>>> b753b5a (유진이 입니다)
+
 </body>
 </html>
