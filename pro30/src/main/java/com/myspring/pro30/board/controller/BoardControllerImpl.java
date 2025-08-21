@@ -62,6 +62,17 @@ public class BoardControllerImpl  implements BoardController{
 		
 	}
 	
+	@RequestMapping(value= "/youjinida.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView youjinida(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		
+		System.out.println("viewName :: "+ viewName);
+		
+		ModelAndView mav = new ModelAndView("/youjinida");
+		return mav;
+		
+	}
+	
 	@Override
 	@RequestMapping(value= "/board/listArticles.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {

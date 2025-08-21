@@ -33,8 +33,13 @@
 		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
 		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
 		<a href="${contextPath}/board/listImages.do"  class="no-underline">갤러리게시판</a><br>
+<<<<<<< HEAD
 		<a href="${contextPath}/youjin.do"  class="no-underline">유진게시판</a><br>
 		<a href="${contextPath}/yungyo.do"  class="no-underline">윤교게시판</a><br>
+=======
+		<a href="${contextPath}/youjin.do"  class="no-underline">유진이 게시판</a><br>
+		<a href="${contextPath}/youjinida.do"  class="no-underline">유지니다 게시판</a><br>
+>>>>>>> b753b5a (유진이 입니다)
 		<a href="#"  class="no-underline">상품관리</a><br>
 	</h1>
 	
