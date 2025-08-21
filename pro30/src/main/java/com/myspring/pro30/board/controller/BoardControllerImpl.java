@@ -45,6 +45,9 @@ public class BoardControllerImpl  implements BoardController{
 	@RequestMapping(value= "/board/listArticles.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String)request.getAttribute("viewName");
+		
+		System.out.println("viewName :: "+ viewName);
+		
 		List articlesList = boardService.listArticles();
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("articlesList", articlesList);
