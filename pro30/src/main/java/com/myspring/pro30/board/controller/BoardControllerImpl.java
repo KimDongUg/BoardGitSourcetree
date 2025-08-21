@@ -41,6 +41,17 @@ public class BoardControllerImpl  implements BoardController{
 	@Autowired
 	private ArticleVO articleVO;
 	
+	@RequestMapping(value= "/youjin.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView youjin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = (String)request.getAttribute("viewName");
+		
+		System.out.println("viewName :: "+ viewName);
+		
+		ModelAndView mav = new ModelAndView("/youjin");
+		return mav;
+		
+	}
+	
 	@Override
 	@RequestMapping(value= "/board/listArticles.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
