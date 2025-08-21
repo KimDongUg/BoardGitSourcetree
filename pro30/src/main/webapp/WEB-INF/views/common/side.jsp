@@ -33,6 +33,7 @@
 		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
 		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
 		<a href="${contextPath}/board/listImages.do"  class="no-underline">갤러리게시판</a><br>
+		<a href="${contextPath}/youjin.do"  class="no-underline">유진게시판</a><br>
 		<a href="#"  class="no-underline">상품관리</a><br>
 	</h1>
 	
