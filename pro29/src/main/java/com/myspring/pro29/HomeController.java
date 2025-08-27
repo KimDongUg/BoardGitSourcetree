@@ -40,4 +40,9 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 	  return "JSONTest";
 	}
+	
+	@RequestMapping(value = "/index_ajax", method = RequestMethod.GET)
+	public String index_ajax(Locale locale, Model model) {
+	  return "index_ajax";
+	}
 }

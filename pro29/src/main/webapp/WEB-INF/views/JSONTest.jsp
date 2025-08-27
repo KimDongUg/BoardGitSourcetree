@@ -21,6 +21,8 @@
         contentType: "application/json",
         data :JSON.stringify(member),
      success:function (data,textStatus){
+    	 alert(data);
+    	 $("#output").html(data);
      },
      error:function(data,textStatus){
         alert("에러가 발생했습니다.");

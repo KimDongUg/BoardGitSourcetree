@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +26,9 @@ public class TestController {
 	
   @RequestMapping("/hello")
   public String hello() {
+	  // REST (Representational State Transfer) : 화면은 그대로 유지하면서 필요한 데이터만 전송 받아 빠르게 결과를 표시(예: Ajax)
+	  // REST API : REST 방식으로 제공되는 API (= RESTful API)
+	  
 	return "Hello REST!!";
   } 
   
@@ -66,16 +72,25 @@ public class TestController {
   
   @RequestMapping(value= "/notice/{num}" , method = RequestMethod.GET)
   public int notice(@PathVariable("num") int num ) throws Exception {
+	  
+	  // @PathVariable : 브라우저에서 요청 URL로 전달된 매개변수를 가져와서 활용할 때
+	  
 	  return num;
   }	
 
   @RequestMapping(value= "/info", method = RequestMethod.POST)
-  public void modify(@RequestBody MemberVO vo ){
+  public String modify(@RequestBody MemberVO vo, HttpServletRequest request, HttpServletResponse response ) 
+		  throws Exception{
+	request.setCharacterEncoding("utf-8");
+	response.setContentType("html/text;charset=utf-8"); 
+	  
     logger.info(vo.toString());
+    
+    return vo.toString();
   }
   
   @RequestMapping("/membersList2")
-  public  ResponseEntity<List<MemberVO>> listMembers2() {
+  public ResponseEntity<List<MemberVO>> listMembers2() {
 	List<MemberVO> list = new ArrayList<MemberVO>();
 	for (int i = 0; i < 10; i++) {
 	  MemberVO vo = new MemberVO();
@@ -85,7 +100,13 @@ public class TestController {
       vo.setEmail("lee"+i+"@test.com");
 	  list.add(vo);
 	}
-    return new ResponseEntity(list,HttpStatus.INTERNAL_SERVER_ERROR);
+	
+	// 코드 200 (성공 응답) : HttpStatus.OK
+	// 코드 201 (성공 응답) : HttpStatus.CREATED   <== 새로운 리소스 생성되었다는 의미의 상태
+	// 코드 404 (클라이언트 오류 응답) : HttpStatus.NOT_FOUND
+	// 코드 500 (서버 오류 응답): HttpStatus.INTERNAL_SERVER_ERROR 
+	
+    return new ResponseEntity(list, HttpStatus.INTERNAL_SERVER_ERROR);
   }	
   
   
