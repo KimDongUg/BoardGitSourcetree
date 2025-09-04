@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Handles requests for the application home page.
@@ -35,6 +36,12 @@ public class HomeController {
 		
 		return "home";
 	}*/
+	
+	@GetMapping("/index_ajax_ryu")
+	public String indexAjaxRyu() {
+	    return "index_ajax_ryu";   // /WEB-INF/views/index_ajax_ryu.jsp
+	}
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
