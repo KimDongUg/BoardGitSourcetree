@@ -26,8 +26,8 @@ public class TestController {
 	
   @RequestMapping("/hello")
   public String hello() {
-	  // REST (Representational State Transfer) : È­¸éÀº ±×´ë·Î À¯ÁöÇÏ¸é¼­ ÇÊ¿äÇÑ µ¥ÀÌÅÍ¸¸ Àü¼Û ¹Ş¾Æ ºü¸£°Ô °á°ú¸¦ Ç¥½Ã(¿¹: Ajax)
-	  // REST API : REST ¹æ½ÄÀ¸·Î Á¦°øµÇ´Â API (= RESTful API)
+	  // REST (Representational State Transfer) : í™”ë©´ì€ ê·¸ëŒ€ë¡œ ìœ ì§€í•˜ë©´ì„œ í•„ìš”í•œ ë°ì´í„°ë§Œ ì „ì†¡ ë°›ì•„ ë¹ ë¥´ê²Œ ê²°ê³¼ë¥¼ í‘œì‹œ(ì˜ˆ: Ajax)
+	  // REST API : REST ë°©ì‹ìœ¼ë¡œ ì œê³µë˜ëŠ” API (= RESTful API)
 	  
 	return "Hello REST!!";
   } 
@@ -37,7 +37,7 @@ public class TestController {
     MemberVO vo = new MemberVO();
     vo.setId("hong");
     vo.setPwd("1234");
-    vo.setName("È«±æµ¿");
+    vo.setName("í™ê¸¸ë™");
     vo.setEmail("hong@test.com");
     return vo;
   } 	
@@ -49,7 +49,7 @@ public class TestController {
 	  MemberVO vo = new MemberVO();
 	  vo.setId("hong"+i);
 	  vo.setPwd("123"+i);
-	  vo.setName("È«±æµ¿"+i);
+	  vo.setName("í™ê¸¸ë™"+i);
 	  vo.setEmail("hong"+i+"@test.com");
 	  list.add(vo);
 	}
@@ -63,7 +63,7 @@ public class TestController {
       MemberVO vo = new MemberVO();
       vo.setId("hong" + i);
       vo.setPwd("123"+i);
-      vo.setName("È«±æµ¿" + i);
+      vo.setName("í™ê¸¸ë™" + i);
       vo.setEmail("hong"+i+"@test.com");
       map.put(i, vo); 
     }
@@ -73,7 +73,7 @@ public class TestController {
   @RequestMapping(value= "/notice/{num}" , method = RequestMethod.GET)
   public int notice(@PathVariable("num") int num ) throws Exception {
 	  
-	  // @PathVariable : ºê¶ó¿ìÀú¿¡¼­ ¿äÃ» URL·Î Àü´ŞµÈ ¸Å°³º¯¼ö¸¦ °¡Á®¿Í¼­ È°¿ëÇÒ ¶§
+	  // @PathVariable : ë¸Œë¼ìš°ì €ì—ì„œ ìš”ì²­ URLë¡œ ì „ë‹¬ëœ ë§¤ê°œë³€ìˆ˜ë¥¼ ê°€ì ¸ì™€ì„œ í™œìš©í•  ë•Œ
 	  
 	  return num;
   }	
@@ -96,15 +96,15 @@ public class TestController {
 	  MemberVO vo = new MemberVO();
 	  vo.setId("lee" + i);
 	  vo.setPwd("123"+i);
-	  vo.setName("ÀÌ¼ø½Å" + i);
+	  vo.setName("ì´ìˆœì‹ " + i);
       vo.setEmail("lee"+i+"@test.com");
 	  list.add(vo);
 	}
 	
-	// ÄÚµå 200 (¼º°ø ÀÀ´ä) : HttpStatus.OK
-	// ÄÚµå 201 (¼º°ø ÀÀ´ä) : HttpStatus.CREATED   <== »õ·Î¿î ¸®¼Ò½º »ı¼ºµÇ¾ú´Ù´Â ÀÇ¹ÌÀÇ »óÅÂ
-	// ÄÚµå 404 (Å¬¶óÀÌ¾ğÆ® ¿À·ù ÀÀ´ä) : HttpStatus.NOT_FOUND
-	// ÄÚµå 500 (¼­¹ö ¿À·ù ÀÀ´ä): HttpStatus.INTERNAL_SERVER_ERROR 
+	// ì½”ë“œ 200 (ì„±ê³µ ì‘ë‹µ) : HttpStatus.OK
+	// ì½”ë“œ 201 (ì„±ê³µ ì‘ë‹µ) : HttpStatus.CREATED   <== ìƒˆë¡œìš´ ë¦¬ì†ŒìŠ¤ ìƒì„±ë˜ì—ˆë‹¤ëŠ” ì˜ë¯¸ì˜ ìƒíƒœ
+	// ì½”ë“œ 404 (í´ë¼ì´ì–¸íŠ¸ ì˜¤ë¥˜ ì‘ë‹µ) : HttpStatus.NOT_FOUND
+	// ì½”ë“œ 500 (ì„œë²„ ì˜¤ë¥˜ ì‘ë‹µ): HttpStatus.INTERNAL_SERVER_ERROR 
 	
     return new ResponseEntity(list, HttpStatus.INTERNAL_SERVER_ERROR);
   }	
@@ -115,7 +115,7 @@ public class TestController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 	    String message = "<script>";
-		message += " alert('»õ È¸¿øÀ» µî·ÏÇÕ´Ï´Ù.');";
+		message += " alert('ìƒˆ íšŒì›ì„ ë“±ë¡í•©ë‹ˆë‹¤.');";
 		message += " location.href='/pro29/test/membersList2'; ";
 		message += " </script>";
 		return  new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);

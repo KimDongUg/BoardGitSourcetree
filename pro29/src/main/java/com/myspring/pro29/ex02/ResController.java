@@ -18,7 +18,7 @@ public class ResController {
 	public Map<String, Object> res1() {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", "hong");
-		map.put("name", "ȫ�浿");
+		map.put("name", "홍길동");
 		return map;
 	}
 	
