@@ -1,0 +1,29 @@
+{{>layouts/header}}
+{{#member}}
+<form class="container" action="/members/update" method="post">
+    <div class="mb-3">
+        <label class="form-label">id</label>
+        <input type="text" class="form-control" name="id" value="{{id}}"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">pwd</label>
+        <input type="text" class="form-control" name="pwd" value="{{pwd}}"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">name</label>
+        <input type="text" class="form-control" name="name" value="{{name}}"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">email</label>
+        <input type="text" class="form-control" name="email" value="{{email}}"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">joindate</label>
+        <input type="text" class="form-control" name="joindate" value="{{joindate}}"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;
+    <a href="/members/{{id}}/delete" class="btn btn-danger">Delete</a>
+</form>
+<a href="/members">Back</a>
+{{/member}}
+{{>layouts/footer}}
