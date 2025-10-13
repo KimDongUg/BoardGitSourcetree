@@ -23,20 +23,4 @@ public class Article {
     @Column     // content 필드 선언, 테이블의 content 열과 연결됨
     private String content;
 
-    // 생성자
-//    public Article(Long id, String title, String content) {
-//        this.id = id;
-//        this.title = title;
-//        this.content = content;
-//    }
-
-    // toString
-//    @Override
-//    public String toString() {
-//        return "Article{" +
-//                "id=" + id +
-//                ", title='" + title + '\'' +
-//                ", content='" + content + '\'' +
-//                '}';
-//    }
 }
