@@ -7,6 +7,7 @@
         <th scope="col">name</th>
         <th scope="col">email</th>
         <th scope="col">joindate</th>
+        <td>삭제</td>
     </tr>
     </thead>
     <tbody>
@@ -17,6 +18,7 @@
             <td><a href="/members/{{id}}/edit">{{name}}</a></td>
             <td>{{email}}</td>
             <td>{{joindate}}</td>
+            <td><a href="/members/{{id}}/delete">삭제</a></td>
         </tr>
     {{/memberList}}
     </tbody>
